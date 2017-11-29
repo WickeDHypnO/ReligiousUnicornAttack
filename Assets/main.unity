@@ -14737,7 +14737,7 @@ Prefab:
     - target: {fileID: 114097685104160028, guid: ffdc964c7e0e9214aa0dc2551f40b007,
         type: 2}
       propertyPath: bossLife
-      value: 1
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 114097685104160028, guid: ffdc964c7e0e9214aa0dc2551f40b007,
         type: 2}
