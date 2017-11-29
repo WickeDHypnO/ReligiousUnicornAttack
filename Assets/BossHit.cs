@@ -10,6 +10,7 @@ public class BossHit : MonoBehaviour
     public Slider bossLifeUI;
     float maxLife;
     public GameObject endGameUI;
+    public GameObject deathObject;
 
     private void Start()
     {
@@ -25,13 +26,19 @@ public class BossHit : MonoBehaviour
         }
         if (bossLife == 0)
         {
-            foreach(Collider2D col in GetComponents<Collider2D>())
-            {
-                col.enabled = false;
-            }
-            GetComponent<TestAnimation>().StopAttack();
-            GetComponent<Animator>().Play("BossDeath");
-            endGameUI.SetActive(true);
+            Die();
         }
+    }
+
+    public void Die()
+    {
+        foreach (Collider2D col in GetComponents<Collider2D>())
+        {
+            col.enabled = false;
+        }
+        GetComponent<TestAnimation>().StopAttack();
+        GetComponent<Animator>().Play("BossDeath");
+        endGameUI.SetActive(true);
+        Instantiate(deathObject, deathObject.transform.position, deathObject.transform.rotation);
     }
 }
