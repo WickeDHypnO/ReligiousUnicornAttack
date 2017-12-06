@@ -11,6 +11,8 @@ public class BossHit : MonoBehaviour
     float maxLife;
     public GameObject endGameUI;
     public GameObject deathObject;
+    public GameObject rageParticles;
+    bool reducedTimers;
 
     private void Start()
     {
@@ -24,6 +26,13 @@ public class BossHit : MonoBehaviour
             bossLife -= 1f;
             bossLifeUI.value = bossLife / maxLife;
         }
+        if (bossLife / maxLife < 0.5f && !reducedTimers)
+        {
+            GetComponent<TestAnimation>().gracePeriod *= 0.5f;
+            GetComponent<TestAnimation>().attackDelay *= 0.5f;
+            rageParticles.SetActive(true);
+            reducedTimers = true;
+        }
         if (bossLife == 0)
         {
             Die();
@@ -32,6 +41,8 @@ public class BossHit : MonoBehaviour
 
     public void Die()
     {
+        FindObjectOfType<MusicController>().ChangeToMenuTheme();
+        rageParticles.SetActive(false);
         foreach (Collider2D col in GetComponents<Collider2D>())
         {
             col.enabled = false;

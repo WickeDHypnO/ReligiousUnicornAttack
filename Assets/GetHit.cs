@@ -9,6 +9,7 @@ public class GetHit : MonoBehaviour {
     public float graceTime;
     float graceTimer;
     bool grace;
+    public GameObject EndGameUI;
 
     private void Update()
     {
@@ -32,7 +33,7 @@ public class GetHit : MonoBehaviour {
             lifesUI[lifes].SetActive(false);
             grace = true;
             if (lifes == 0)
-                Application.LoadLevel(0);
+                EndGameUI.SetActive(true);
             GetComponent<SpriteRenderer>().color = Color.white * 0.5f;
         }
     }

@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 941323e2ae61d0b4baf8b2dcdddd0074
+timeCreated: 1512596489
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Freshman
+  fontNames:
+  - Freshman
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

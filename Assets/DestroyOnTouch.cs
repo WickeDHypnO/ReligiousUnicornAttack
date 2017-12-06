@@ -6,7 +6,8 @@ public class DestroyOnTouch : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.collider.tag == "Enemy")
+        GameObject.Find("HitSound").GetComponent<AudioSource>().Play();
+        if (col.collider.tag == "Enemy")
         {
             col.collider.GetComponent<BossHit>().DealDamage();
         }
