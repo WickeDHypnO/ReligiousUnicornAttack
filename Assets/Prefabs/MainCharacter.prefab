@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 50362536500286030}
   - component: {fileID: 114972635314469194}
   - component: {fileID: 114562920569075928}
+  - component: {fileID: 114995882806429672}
   m_Layer: 10
   m_Name: MainCharacter
   m_TagString: Player
@@ -116,7 +117,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1643003959630028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.13, y: -2.89, z: 0}
+  m_LocalPosition: {x: -9, y: -4.5, z: 0}
   m_LocalScale: {x: 0.20248494, y: 0.20248494, z: 0.20248494}
   m_Children:
   - {fileID: 4582041662759620}
@@ -361,6 +362,24 @@ MonoBehaviour:
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114995882806429672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1643003959630028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ab3fc49cac65241945e1e2798d332e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifes: 3
+  lifesUI:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  graceTime: 2
+  EndGameUI: {fileID: 0}
 --- !u!212 &212010708781521484
 SpriteRenderer:
   m_ObjectHideFlags: 1
