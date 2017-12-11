@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class DestroyOnTouch : MonoBehaviour {
 
-	void OnCollisionEnter2D(Collision2D col)
+	private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Play sound of destruction of object
         GameObject.Find("HitSound").GetComponent<AudioSource>().Play();
-        if (col.collider.tag == "Enemy")
+        if (collision.collider.tag == "Enemy")
         {
-            col.collider.GetComponent<BossHit>().DealDamage();
+            collision.collider.GetComponent<BossHit>().DealDamage();
         }
         Destroy(gameObject);
     }

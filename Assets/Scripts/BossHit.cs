@@ -5,41 +5,44 @@ using UnityEngine.UI;
 
 public class BossHit : MonoBehaviour
 {
-
     public float bossLife = 100f;
-    public Slider bossLifeUI;
-    float maxLife;
-    public GameObject endGameUI;
+    public UIController uiController;
     public GameObject deathObject;
     public GameObject rageParticles;
-    bool reducedTimers;
+    private float maxLife;
+    private bool reducedTimers;
 
     private void Start()
     {
+        //Set max boss life to current life, for sending values to update UI
         maxLife = bossLife;
     }
 
+    //Deal damage to boss, update UI
     public void DealDamage()
     {
         if (bossLife > 0)
         {
             bossLife -= 1f;
-            bossLifeUI.value = bossLife / maxLife;
+            uiController.SetBossHealthUI(bossLife / maxLife);
         }
+        //When boss life is lower than 50%, RAGE!
         if (bossLife / maxLife < 0.5f && !reducedTimers)
         {
-            GetComponent<TestAnimation>().gracePeriod *= 0.5f;
-            GetComponent<TestAnimation>().attackDelay *= 0.5f;
+            GetComponent<BossAttack>().gracePeriod *= 0.5f;
+            GetComponent<BossAttack>().attackDelay *= 0.5f;
             rageParticles.SetActive(true);
             reducedTimers = true;
         }
+        //Die if life is zero
         if (bossLife == 0)
         {
             Die();
         }
     }
 
-    public void Die()
+    //Trigger boss death, update UI
+    private void Die()
     {
         FindObjectOfType<MusicController>().ChangeToMenuTheme();
         rageParticles.SetActive(false);
@@ -47,9 +50,10 @@ public class BossHit : MonoBehaviour
         {
             col.enabled = false;
         }
-        GetComponent<TestAnimation>().StopAttack();
-        GetComponent<Animator>().Play("BossDeath");
-        endGameUI.SetActive(true);
+        GetComponent<BossAttack>().StopAttack();
+        GetComponent<BossAnimation>().PlayDeathAnimation();
+        FindObjectOfType<UIController>().ShowGameOverUI(true);
+        //Spawn BIG cross to crush boss
         Instantiate(deathObject, deathObject.transform.position, deathObject.transform.rotation);
     }
 }

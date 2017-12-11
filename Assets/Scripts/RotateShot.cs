@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RotateShot : MonoBehaviour {
 
-	void FixedUpdate () {
+    //Rotate shot cross continously
+	private void FixedUpdate () {
         transform.Rotate(new Vector3(0, 0, 15f));
 	}
 }

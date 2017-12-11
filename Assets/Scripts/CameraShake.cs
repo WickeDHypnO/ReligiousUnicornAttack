@@ -8,11 +8,13 @@ public class CameraShake : MonoBehaviour {
     public float shakeStrength;
     float timer;
 
-	void OnDisable() {
+	private void OnDisable() {
+        //Set default position when disabled, prevents camera from staying in weird place
         transform.position = new Vector3(0, 0, -10);
 	}
 	
-	void Update () {
+    //Shake camera until time has passed
+	private void Update () {
         timer += Time.deltaTime;
         transform.position = new Vector3(Random.Range(-shakeStrength, shakeStrength), Random.Range(-shakeStrength, shakeStrength), -10);
         if (timer >= shakeTime)

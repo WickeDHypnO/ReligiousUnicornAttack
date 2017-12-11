@@ -379,7 +379,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   graceTime: 2
-  EndGameUI: {fileID: 0}
 --- !u!212 &212010708781521484
 SpriteRenderer:
   m_ObjectHideFlags: 1

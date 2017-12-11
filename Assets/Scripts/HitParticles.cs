@@ -8,6 +8,7 @@ public class HitParticles : MonoBehaviour {
 
     private void OnDestroy()
     {
+        //Spawn self-destroying particles after hit
         Instantiate(hitParticles, transform.position, hitParticles.transform.rotation);
     }
 }
